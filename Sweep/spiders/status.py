@@ -16,7 +16,7 @@ class StatusSpider(scrapy.Spider):
 
     def parse(self, response):
         self.driver.get(response.url)
-        el = self.driver.find_element_by_xpath("//button")
+        el = self.driver.find_element_by_xpath("//button[contains(@class, 'main-butt')]")
         if el:
             el.click()
-        self.driver.close()
+        # self.driver.close()
