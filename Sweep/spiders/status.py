@@ -7,24 +7,45 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class StatusSpider(scrapy.Spider):
     name = "status"
-    # allowed_domains = ["www.twitter.com"]
-    # start_urls = (
-    #     'http://www.www.twitter.com/',
-    # )
-    allowed_domains = ["http://localhost:8080"]
-    start_urls = ['http://localhost:8080']
+    allowed_domains = ["www.twitter.com"]
+    start_urls = (
+        'http://www.twitter.com/',
+    )
+    # allowed_domains = ["http://localhost:8080"]
+    # start_urls = ['http://localhost:8080']
 
     def __init__(self):
         self.driver = webdriver.Chrome()
 
-    def parse(self, response):
+    def login(self, response):
         self.driver.get(response.url)
-        el = self.driver.find_element_by_xpath("//button[contains(@class, 'main-butt')]")
-        if el:
-            el.click()
-        form = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "fill-me-in"))
+        email_form = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//input[contains(@id, 'signin-email')]"))
         )
-        form.send_keys("hello world")
+        password_form = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//input[contains(@id, 'signin-password')]"))
+        )
+        email_form.send_keys("vh.sweep@gmail.com")
+        password_form.send_keys("yellowsubmarine")
+        login_button = self.driver.find_element_by_xpath("//button[contains(@class, 'flex-table-btn')]")
+        if login_button:
+            login_button.click()
 
+    def parse(self, response):
+        self.login(response)
         # self.driver.close()
+
+
+# NOTES
+# input#signin-email
+# input#signin-password
+# button.flex-table-btn
+
+# EXAMPLES
+# el = self.driver.find_element_by_xpath("//button[contains(@class, 'main-butt')]")
+# if el:
+#     el.click()
+# form = WebDriverWait(self.driver, 10).until(
+#     EC.presence_of_element_located((By.CLASS_NAME, "fill-me-in"))
+# )
+# form.send_keys("hello world")
