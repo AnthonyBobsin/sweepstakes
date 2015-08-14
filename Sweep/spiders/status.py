@@ -23,7 +23,7 @@ class StatusSpider(scrapy.Spider):
 
     def status_url(self, status):
         # TODO: Might be able to get URL from Status class
-        return "http://www.twitter.com/%s/%s" % (status['user'], status['id'])
+        return "http://www.twitter.com/%s/status/%s" % (status['user'], status['id'])
 
     def set_old_page(self):
         self.old_page = self.driver.find_element_by_tag_name('html')
