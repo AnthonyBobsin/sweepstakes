@@ -26,6 +26,8 @@ tweets = api.GetSearch(term='#contest', count=30) # ARRAY OF STATUSES
 tweet = tweets[0]
 
 tweet.text == "This is my first tweet"
-tweet.GetRetweeted() == False
+tweet.retweeted == False
+tweet.id = 630851550156599296
 
-api.PostRetweet(status_id)
+user = tweet.user
+user.name = 'Forbes'
