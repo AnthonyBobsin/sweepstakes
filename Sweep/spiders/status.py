@@ -8,9 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class StatusSpider(scrapy.Spider):
     name = "status"
     allowed_domains = ["www.twitter.com"]
-    start_urls = (
-        'http://www.twitter.com/',
-    )
+    start_urls = ['http://www.twitter.com/']
     # allowed_domains = ["http://localhost:8080"]
     # start_urls = ['http://localhost:8080']
 
