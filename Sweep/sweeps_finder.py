@@ -27,6 +27,7 @@ class SweepsFinder:
         # tweet = status.text
         return {
             'tweet': status.text,
+            'user': status.user.name,
             'id': status.id
         }
 
@@ -38,7 +39,8 @@ class SweepsFinder:
 
     def filter_out_sweepstakes(self):
         keywords = {
-            'main': ['#contest', '#giveaway', 'RT to win']
+            # 'main': ['#contest', '#giveaway', 'RT to win']
+            'main': ['#contest']
         }
         statuses = []
 
