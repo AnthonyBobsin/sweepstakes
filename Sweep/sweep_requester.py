@@ -16,13 +16,13 @@ class SweepRequester:
     def request_sweepstake_statuses(self):
         keywords = {
             # 'main': ['#contest', '#giveaway', 'RT to win']
-            'main': ['#contest']
+            'main': ['#contest', '#giveaway']
         }
         self.statuses = []
 
         # loop through keywords main and append to an array
         for word in keywords['main']:
-            results = self.api.GetSearch(term=word)
+            results = self.api.GetSearch(term=word, count=100)
             for result in results:
                 if self.not_yet_included(result):
                     self.statuses.append(result)

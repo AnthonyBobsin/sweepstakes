@@ -42,12 +42,18 @@ class StatusSpider(scrapy.Spider):
         if login_button:
             login_button.click()
 
+    def follow_user(self):
+        follow_button = self.driver.find_element(By.CSS_SELECTOR, "button.user-actions-follow-button")
+        if follow_button:
+            follow_button.click()
+
     def retweet_statuses(self):
         # self.driver.get(self.status_url(self.statuses[0]))
 
         for s in self.statuses:
             # self.wait_for(self.page_has_loaded)
             self.driver.get(self.status_url(s))
+            if s['follow']: self.follow_user()
             retweet_button = self.driver.find_element(By.CSS_SELECTOR, ".opened-tweet .Icon--retweet")
             if retweet_button:
                 retweet_button.click()

@@ -2,13 +2,14 @@
 class SweepProcessor:
     def process_status(self, status):
         # TODO: Check if it is the original tweet
-        if status.retweeted and status.in_reply_to_user_id:
+        if status.retweeted or status.in_reply_to_user_id:
             return None
 
-        # TODO: Filter tweet and find out if I should follow
-        # tweet = status.text
+        tweet = status.text.lower()
+        follow = True if "follow" in tweet else False
         return {
             'tweet': status.text,
             'user': status.user.name,
-            'id': status.id
+            'id': status.id,
+            'follow': follow
         }

@@ -31,3 +31,5 @@ tweet.id = 630851550156599296
 
 user = tweet.user
 user.name = 'Forbes'
+
+geocode=("43.7000", "79.4000", "2300mi")
