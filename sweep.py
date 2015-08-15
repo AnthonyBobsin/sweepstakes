@@ -3,16 +3,16 @@ from scrapy.crawler import Crawler
 from scrapy import log, signals
 from scrapy.utils.project import get_project_settings
 
-from sweep_requester import SweepRequester
-from sweep_processor import SweepProcessor
-from spiders.status import StatusSpider
-from spiders.config import user_agents
+from Sweep.sweep_requester import SweepRequester
+from Sweep.sweep_processor import SweepProcessor
+from Sweep.spiders.status import StatusSpider
+from Sweep.spiders.config import user_agents
 
 requester = SweepRequester()
 processor = SweepProcessor()
 
 sweepstakes = requester.request_sweepstake_statuses()
-sweepstakes = map(processor.process_status, sweepstakes)
+sweepstakes = filter(None, map(processor.process_status, sweepstakes))
 
 status_spider = StatusSpider(statuses=sweepstakes)
 

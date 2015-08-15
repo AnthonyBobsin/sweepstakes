@@ -1,8 +1,9 @@
+import twitter
 
 class SweepProcessor:
     def process_status(self, status):
         # TODO: Check if it is the original tweet
-        if status.retweeted or status.in_reply_to_user_id:
+        if self.is_not_valid(status):
             return None
 
         tweet = status.text.lower()
@@ -13,3 +14,6 @@ class SweepProcessor:
             'id': status.id,
             'follow': follow
         }
+
+    def is_not_valid(self, status):
+        return status.retweeted or status.in_reply_to_user_id or ("rt" not in status.text.lower())

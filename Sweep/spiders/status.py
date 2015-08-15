@@ -48,10 +48,7 @@ class StatusSpider(scrapy.Spider):
             follow_button.click()
 
     def retweet_statuses(self):
-        # self.driver.get(self.status_url(self.statuses[0]))
-
         for s in self.statuses:
-            # self.wait_for(self.page_has_loaded)
             self.driver.get(self.status_url(s))
             if s['follow']: self.follow_user()
             retweet_button = self.driver.find_element(By.CSS_SELECTOR, ".opened-tweet .Icon--retweet")
@@ -63,7 +60,6 @@ class StatusSpider(scrapy.Spider):
                     action_button.click()
 
     def status_url(self, status):
-        # TODO: Might be able to get URL from Status class
         return "http://www.twitter.com/%s/status/%s" % (status['user'], status['id'])
 
     def set_old_page(self):
