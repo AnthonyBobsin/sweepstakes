@@ -11,7 +11,7 @@ $ git clone https://github.com/AnthonyBobsin/sweepstakes.git
 $ pip install scrapy selenium python-twitter
 ```
 
-Selenium requires that you have a web driver installed. I use the Chrome driver which you can download [here](http://chromedriver.storage.googleapis.com/index.html?path=2.16/). If you wish to use a different web driver, install it, then change the initialization in `Sweep/spiders/status.py` to match your driver.
+Selenium requires that you have a web driver installed. I use the Chrome driver which you can download [here](http://chromedriver.storage.googleapis.com/index.html?path=2.16/). If you wish to use a different web driver, install it, then change the initialize method in `Sweep/spiders/status.py` to match your driver.
 
 In order for this program to use your specific Twitter account, you must create your own config file based on the one I provided. In order to do so run the following command in the project folder, then edit in your own credentials to the new file.
 
