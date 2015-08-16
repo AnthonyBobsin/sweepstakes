@@ -22,7 +22,7 @@ $ cp Sweep/spiders/config.example.py Sweep/spiders/config.py
 Once you have completed the previous steps, you are good to run the program and let it crawl and retweet. To do this, you must run the command below. That will find appropriate tweets, launch the web driver, log you in to twitter, and navigate to each found tweet url retweeting and following accordingly.
 
 ```sh
-$ python Sweep/sweep.py
+$ python sweep.py
 ```
 
 Good luck with the many contests you will be entered in!
