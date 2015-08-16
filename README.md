@@ -2,6 +2,10 @@
 
 Sweepstakes is a program written in Python that searches for Twitter tweets that contain certain keywords relating to contests. It processes and filters out tweets until it finds a list of credible original contests that offer the opportunity to win a prize if you retweet. Looping through the list found, it retweets and follows if necessary each tweet in order to be entered into various giveaways and contests.
 
+##Disclaimer
+
+This bot is written purely for educational purposes. I hold no liability for what you do with this bot or what happens to you by using this bot. Abusing this bot can get you banned from Twitter, so make sure to read up on proper usage of the Twitter API.
+
 ##Setup
 
 Sweepstakes was developed using Python v2.7.6. Some dependencies that Sweepstakes uses are Scrapy for web crawling, Selenium for user simulation, and Python-twitter for searching and requesting tweets. Run the following commands to clone the repo and install dependencies.
